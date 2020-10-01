@@ -1,0 +1,28 @@
+# Routings
+kb_popup_index:
+    path:     /kb_popup/index
+    methods:  [GET]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Popup\Controller\PopupController::indexAction'
+        _legacy_controller: 'Kb_PopupController'
+        _legacy_link: 'Kb_PopupController'
+
+kb_popup_add:
+    path:     /kb_popup/add
+    methods:  [GET, POST]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Popup\Controller\PopupController::addAction'
+
+kb_popup_edit:
+    path:     /kb_popup/edit/{id}
+    methods:  [GET, POST]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Popup\Controller\PopupController::editAction'
+
+kb_popup_delete:
+    path:     /kb_popup/delete/{id}
+    methods:  [GET, POST]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Popup\Controller\PopupController::deleteAction'
+        
+

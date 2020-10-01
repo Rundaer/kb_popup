@@ -1,0 +1,103 @@
+{% extends '@Modules/kb_popup/views/templates/admin/base.html.twig' %}
+
+
+
+{% block body %}
+    <style>
+    .material-choice-tree-container ul.choice-tree .collapsed>ul{display: block}
+    </style>
+    <div class="col-12">    
+
+    {# {{ form(form, {"attr": {"novalidate": "novalidate"}}) }}    #}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}      
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="col-12">
+        <div id="isImage" class="col">
+            {{ form_row(form.isImage) }}
+        </div>
+        <div id="pageSelect" class="col">
+            {{ form_row(form.page_select) }}
+        </div>
+        <div id="products" class="col">
+            {{ form_row(form.id_product) }}
+        </div>
+        <div id="categories" class="col">
+            {{ form_row(form.id_category) }}
+        </div>
+        <div id="text" class="col">
+            {{ form_row(form.text) }}
+        </div>
+        <div id="link" class="col">
+            {{ form_row(form.link) }}
+        </div>
+        <div id="image" class="col">
+            {{ form_row(form.image) }}
+        </div>
+        <div id="backgroundColor" class="col">
+            {{ form_row(form.backgroundColor) }}
+        </div>
+        <div id="startsAt" class="col">
+            {{ form_row(form.startsAt) }}
+        </div>
+        <div id="endsAt" class="col">
+            {{ form_row(form.endsAt) }}
+        </div>
+        <div id="submit" class="col">
+            {{ form_row(form.submit, { 'label': 'Submit me' }) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    {% block javascript %}
+    <script src="{{ asset('themes/default/js/bundle/default.js') }}"></script>
+    <script src="{{ asset('themes/new-theme/public/form_popover_error.bundle.js') }}"></script>
+    <script src="{{ asset('themes/new-theme/public/category.bundle.js') }}"></script>
+    <script>
+    $(document).ready(function() {
+
+        var isImage = $("#isImage input[type=checkbox]");
+        var pageSelect = $("#pageSelect select");
+
+        if (isImage.is(":checked")) { 
+            $("#text").css("display","none");
+            $("#image").css("display","block");
+        } else { 
+            $("#text").css("display","block");
+            $("#image").css("display","none");
+        } 
+        if($(pageSelect).val() == 'category'){
+            $("#categories").css("display","block");
+            $("#products").css("display","none");
+        } else {
+            $("#categories").css("display","none");
+            $("#products").css("display","block");
+        }
+
+        isImage.change(function(){
+            if (isImage.is(":checked")) { 
+                $("#text").css("display","none");
+                $("#image").css("display","block");
+            } else { 
+                $("#text").css("display","block");
+                $("#image").css("display","none");
+            } 
+        });
+
+        pageSelect.change(function(){
+            if($(this).val() == 'category'){
+                $("#categories").css("display","block");
+                $("#products").css("display","none");
+            } else {
+                $("#categories").css("display","none");
+                $("#products").css("display","block");
+            }
+        });
+    });
+
+
+    </script>
+    {% endblock %}
+{% endblock %}
+

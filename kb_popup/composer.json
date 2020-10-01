@@ -1,0 +1,20 @@
+{
+    "name": "konrad-babiarz/kb_popup",
+    "description": "PrestaShop 1.7 module",
+    "authors": [
+        {
+            "name": "Konrad Babiarz",
+            "email": "konrad.babiarz@tutanota.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "PrestaShop\\Module\\Kb_Popup\\": "src/"
+      },
+      "config": {
+        "prepend-autoloader": false,
+        "preferred-install": "dist"
+      },
+      "type": "prestashop-module"
+    }
+}

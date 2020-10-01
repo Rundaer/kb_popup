@@ -1,0 +1,10 @@
+.banner{
+    display: flex;
+    height: 10vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-position: center;
+    background-repeat: no-repeat;
+}

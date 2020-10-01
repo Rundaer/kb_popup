@@ -1,0 +1,44 @@
+{% extends '@Modules/kb_popup/views/templates/admin/base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+    
+    <div class="row mb-2">
+        <a type="button" class="btn btn-primary" href="{{ url('kb_popup_add') }}">Add new popup</a>
+    </div>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Text</th>
+        <th scope="col">Product id</th>
+        <th scope="col">Page</th>
+        <th scope="col">Image / Text</th>
+        <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <th scope="row">{{record.id}}</th>
+            <td>{{ record.image }}</td>
+            <td>{{ record.text|raw }}</td>
+            <td>{{ record.idProduct }}</td>
+            <td>{{ record.pageSelect }}</td>
+            <td>{% if record.isImage == 1 %}Image type{% else %} Text type {% endif %}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a type="button" class="btn btn-primary" href="{{ url("kb_popup_edit", {"id": record.id}) }}">Edit</a>
+                    <a type="button" class="btn btn-danger" href="{{ url("kb_popup_delete", {"id": record.id}) }}">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+    {% block javascript %}{% endblock %}
+{% endblock %}

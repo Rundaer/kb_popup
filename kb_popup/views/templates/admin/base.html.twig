@@ -1,0 +1,40 @@
+{% extends(template_from_string(
+    getLegacyLayout(
+        app.request.attributes.get('_legacy_controller'),
+        layoutTitle is defined ? layoutTitle : 'Banner',
+        layoutHeaderToolbarBtn is defined ? layoutHeaderToolbarBtn : [],
+        layoutDisplayType is defined ? layoutDisplayType : 'Banner',
+        showContentHeader is defined ? showContentHeader : true,
+        headerTabContent is defined ? headerTabContent : '',
+        enableSidebar is defined ? enableSidebar : true,
+        help_link is defined ? help_link : ''
+    )
+)) %}
+
+{% block content_header %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                {% for flash_message in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-success">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+
+                {% for flash_message in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+
+                
+                {% block body %}
+                
+                {% endblock %}
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
